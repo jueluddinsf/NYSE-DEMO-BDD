@@ -31,7 +31,8 @@ Feature: Any user should be able see Market data component
         And I verify Last price data numeric and has 3 decimal places
         And I verify percentage and value change data has up to 3 decimal
         Then I verify red for minus and green for plus displays
-
+     
+     #test fails as Market data table stop displaying after few page refresh. Might be a known issue.
     Scenario: 03 - Verify each row is clickable
         Given I click on NYSE tab
         Then I click on each row and verify quote page displays
