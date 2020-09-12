@@ -16,6 +16,11 @@ const elementIsVisible = {visible: true};
 
 setDefaultTimeout(60 * 1000);
 
+/*
+ ******** below lists of all functions **********
+ */
+
+// function to check descending order of int data
 function verifyDescOrder(filteredVal) {
     for (let i = 0; i < filteredVal.length; i++) {
         if (filteredVal[i] < filteredVal[i + 1]) {
@@ -25,6 +30,10 @@ function verifyDescOrder(filteredVal) {
     return true;
 }
 
+/*
+this reusable function will help to determine Thousand 
+Separator in a number string. Data must be individual string 
+ */
 function verifyThousandSeparatorExists(data) {
     const arr = data.split(",");
     for (let i = 1; i < arr.length; i++) {
@@ -35,6 +44,10 @@ function verifyThousandSeparatorExists(data) {
     //console.log(arr)
     return true;
 }
+
+/*
+This function will determine if string has up to 3 decimals
+ */
 
 function verifyNumHasUpTo3Decimal(data) {
     const arr = data.split(".");
@@ -47,15 +60,17 @@ function verifyNumHasUpTo3Decimal(data) {
     return true;
 }
 
+// this function will determine if a str is upper case
 function isUpperCase(str) {
     return str === str.toUpperCase();
 }
 
-class MarketData {
+/*
+ ******** End of all functions **********
+ */
 
-    //
-    // Hooks
-    //
+
+class MarketData {
 
     async openApplication() {
         this.browser = await puppeteer.launch(launchConfig);
@@ -66,9 +81,6 @@ class MarketData {
         await this.browser.close();
     };
 
-    //
-    // Home Page
-    //
 
     async navigateToHomePage() {
         const navPromise = this.page.waitForNavigation();
@@ -293,7 +305,7 @@ class MarketData {
         const hrefs = await this.page.$$eval('div > div > p:nth-child(4) > a', as => as.map(a => a.href));
         expect(hrefs[0]).to.eq('https://www.nyse.com/listings_directory/stock')
     }
-        
+
 
 };
 
