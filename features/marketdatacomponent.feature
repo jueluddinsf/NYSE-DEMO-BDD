@@ -4,8 +4,10 @@ Feature: Any user should be able see Market data component
     - “NYSE” table must display data in volume order (descending)
     - Volume column data must be numeric and contain thousand separator.
     - Last price column data must be numeric with precision up to 3 decimal places.
-    - Percentage change column data must display value change with precision up to 3 decimal places and percentage precision with 3 decimal places.
-    - Percentage change column data must display the value in green when there is positive change and red when there is negative change.
+    - Percentage change column data must display value change with precision up to 3
+    decimal places and percentage precision with 3 decimal places.
+    - Percentage change column data must display the value in green when there is positive
+    change and red when there is negative change.
     - Each row must support click through action to the quote page.
     - All text such as Company Name and column headers should be displayed in upper case.
     - Link “View Our Listings Directory” must link to the Listing Directory located at
