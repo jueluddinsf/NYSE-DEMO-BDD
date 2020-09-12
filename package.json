@@ -1,0 +1,23 @@
+{
+  "name": "NYSE-DEMO-BDD",
+  "version": "1.0.0",
+  "description": "End to End testing with Cucumber and Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js -f json:reports/cucumber_report.json",
+    "report": "node index.js"
+  },
+  "keywords": [
+    "Cucumber",
+    "Puppeteer",
+    "End2End"
+  ],
+  "author": "Ion Petrache",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "cucumber": "^4.2.1",
+    "cucumber-html-reporter": "^4.0.4",
+    "puppeteer": "^1.20.0"
+  }
+}

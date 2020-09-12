@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RunManager">
+    <configuration name="Scenario: 04 - Verify Company Name an..." type="cucumber.js" factoryName="Cucumber.js" temporary="true">
+      <option name="myFilePath" value="$PROJECT_DIR$/features/marketdatacomponent.feature" />
+      <option name="myNameFilter" value="04 - Verify Company Name and column headers to be displayed in upper case" />
+      <option name="cucumberJsArguments" value="" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber.js.Scenario: 04 - Verify Company Name an..." />
+      </list>
+    </recent_temporary>
+  </component>
+</project>
