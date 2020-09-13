@@ -93,7 +93,7 @@ class MarketData {
         const title = await this.page.title();
         const expectedTitle = expected_title;
         expect(title).to.equal(expectedTitle)
-        console.log("expected: " + expectedTitle + " and found " + title)
+        //console.log("expected: " + expectedTitle + " and found " + title)
     };
 
     async clickOnElement(selector) {
@@ -143,7 +143,7 @@ class MarketData {
         const ColTexts = await this.page.$$eval(homePage.volumeData,
             elements => elements.map(item => item.textContent.trim()));
         const filteredVal = ColTexts.filter(function (el) {
-            return el != 'Volume';
+            return el !== 'Volume';
         });
         // verify Thousand Separator Exists 
         //console.log(filteredVal);
@@ -162,7 +162,7 @@ class MarketData {
         const lastData = await this.page.$$eval(homePage.lastData,
             elements => elements.map(item => item.textContent.trim()));
         const filteredLastData = lastData.filter(function (el) {
-            return el != 'Last';
+            return el !== 'Last';
         });
         //console.log(filteredLastData);
         for (let i = 0; i < filteredLastData.length; i++) {
@@ -181,7 +181,7 @@ class MarketData {
         const lastData = await this.page.$$eval(homePage.valueAndPercentageData,
             elements => elements.map(item => item.textContent.trim()));
         const filteredValPerData = lastData.filter(function (el) {
-            return el != 'Change (%)';
+            return el !== 'Change (%)';
         });
         //console.log(filteredValPerData);
         for (let i = 0; i < filteredValPerData.length; i++) {
