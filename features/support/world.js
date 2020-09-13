@@ -108,9 +108,9 @@ class MarketData {
         //await console.log(tabTexts)
     };
 
-    async clickNYSEtab() {
-        await this.page.waitForSelector(homePage.nyseTab);
-        await this.page.click(homePage.nyseTab);
+    async clickTab(tab) {
+        await this.page.waitForSelector(eval(tab));
+        await this.page.click(eval(tab));
     };
 
     async ColOrderCheck(expectedColOrder) {
@@ -123,9 +123,9 @@ class MarketData {
     };
 
 
-    async volumeDataDescCheck() {
-        await this.page.waitForSelector(homePage.volumeData);
-        const ColTexts = await this.page.$$eval(homePage.volumeData,
+    async DataDescCheck(data) {
+        await this.page.waitForSelector(eval(data));
+        const ColTexts = await this.page.$$eval(eval(data),
             elements => elements.map(item => parseInt(item.textContent.replace(/,/g, ''), 10)));
         const filteredVal = ColTexts.filter(function (el) {
             return el != null;
@@ -136,9 +136,9 @@ class MarketData {
     };
 
 
-    async volumeDataNumericWithSeparator() {
-        await this.page.waitForSelector(homePage.volumeData);
-        const ColTexts = await this.page.$$eval(homePage.volumeData,
+    async dataNumericWithSeparator(data) {
+        await this.page.waitForSelector(eval(data));
+        const ColTexts = await this.page.$$eval(eval(data),
             elements => elements.map(item => item.textContent.trim()));
         // const filteredVal = ColTexts.filter(function (el) {
         //     return el !== 'Volume';
@@ -155,9 +155,9 @@ class MarketData {
     };
 
 
-    async LastPriceDataNumAndSeparatorCheck() {
-        await this.page.waitForSelector(homePage.lastData);
-        const lastData = await this.page.$$eval(homePage.lastData,
+    async dataNumAndSeparatorCheck(data) {
+        await this.page.waitForSelector(eval(data));
+        const lastData = await this.page.$$eval(eval(data),
             elements => elements.map(item => item.textContent.trim()));
         // const filteredLastData = lastData.filter(function (el) {
         //     return el !== 'Last';
@@ -174,9 +174,9 @@ class MarketData {
     }
 
 
-    async valueAndPercentageDecimalCheck() {
-        await this.page.waitForSelector(homePage.valueAndPercentageData);
-        const lastData = await this.page.$$eval(homePage.valueAndPercentageData,
+    async decimalCheck(data) {
+        await this.page.waitForSelector(eval(data));
+        const lastData = await this.page.$$eval(eval(data),
             elements => elements.map(item => item.textContent.trim()));
         // const filteredValPerData = lastData.filter(function (el) {
         //     return el !== 'Change (%)';
@@ -233,10 +233,10 @@ class MarketData {
        // console.log(companyNames);
         let counter = 2;
         for (let i = 0; i < companyNames.length; i++) {
-            const rowSelector = `#stats > div > div > div:nth-child(2) > div > div > div > div:nth-child(${counter}`
+            const rowSelector = `.d-containter > div:nth-child(${counter}`
             await this.page.waitForSelector(rowSelector);
             await this.page.click(rowSelector);
-            await this.page.waitForSelector('.d-detailquote-head');
+            await this.page.waitForSelector(homePage.quotePage);
             await this.page.goBack();
             await this.page.waitForSelector(homePage.allRowsCompanyName);
             counter++

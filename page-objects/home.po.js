@@ -5,7 +5,7 @@ module.exports = {
     nyseTab: '.ds-tabs > div:nth-child(2)',
     allColumns: '.ds-headerRow > div',
     volumeData: '.ds-row > div:nth-child(2)',
-    lastData: '.ds-row > div:nth-child(3)',
+    lastPrice: '.ds-row > div:nth-child(3)',
     valueAndPercentageData: '.ds-row > div:nth-child(4)',
     greenData: 'div.ds-cell.d-green.d-flex-4',
     redData: 'div.ds-cell.d-red.d-flex-4',
@@ -13,5 +13,6 @@ module.exports = {
     allRowsCompanyName: '.ds-row> div.ds-cell.d-flex-5',
     listingsDirectoryLink: 'div > div > p:nth-child(4) > a',
     headerRow: '.ds-headerRow',
-    tabs: '.ds-tabs'
+    tabs: '.ds-tabs',
+    quotePage: '.d-detailquote-head'
 };

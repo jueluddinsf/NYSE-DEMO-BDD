@@ -20,27 +20,27 @@ Feature: Any user should be able see Market data component
 
     Scenario: 01 - Verify market data tabs order and columns order for NYSE tab
         Then I verify market data tabs are in following order "INDICES,NYSE,NYSE American,ETFs"
-        And I click on NYSE tab
+        And I click on "homePage.nyseTab" tab
         Then I verify the column order to be "Description,Volume,Last,Change (%)"
 
     Scenario: 02 - Verify NYSE volume column contains only numeric with thousand separator and order descending
-        Given I click on NYSE tab
-        And I verify volume data is in descending order
-        Then I verify volume data numeric and contain thousand separator
+        And I click on "homePage.nyseTab" tab
+        And I verify "homePage.volumeData" data is in descending order
+        Then I verify "homePage.volumeData" data numeric and contain thousand separator
 
     Scenario: 03 - Verify last price data is numeric decimal and changes color when there is negative change
-        Given I click on NYSE tab
-        And I verify Last price data numeric and has 3 decimal places
-        And I verify percentage and value change data has up to 3 decimal
+        And I click on "homePage.nyseTab" tab
+        And I verify "homePage.lastPrice" data numeric and has 3 decimal places
+        And I verify "homePage.valueAndPercentageData" data has up to 3 decimal
         Then I verify red for minus and green for plus displays
      
      #test fails as Market data table stop displaying after few page refresh. Might be a known issue.
     Scenario: 03 - Verify each row is clickable
-        Given I click on NYSE tab
+        And I click on "homePage.nyseTab" tab
         Then I click on each row and verify quote page displays
 
     Scenario: 04 - Verify Company Name and column headers to be displayed in upper case
-        Given I click on NYSE tab
+        And I click on "homePage.nyseTab" tab
         And I should see "INDICES" within "homePage.marketData"
         And I should see "NYSE" within "homePage.marketData"
         And I should see "NYSE American" within "homePage.marketData"

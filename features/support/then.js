@@ -16,19 +16,19 @@ Then(/^I verify the column order to be "([^"]*)"$/, async function (expectedColO
     await this.ColOrderCheck(expectedColOrder);
 });
 
-Then(/^I verify volume data is in descending order$/, async function () {
-    await this.volumeDataDescCheck();
+Then(/^I verify "([^"]*)" data is in descending order$/, async function (dataSelector) {
+    await this.DataDescCheck(dataSelector);
 });
-Then(/^I verify volume data numeric and contain thousand separator$/, async function () {
-    await this.volumeDataNumericWithSeparator();
-});
-
-Then(/^I verify Last price data numeric and has 3 decimal places$/, async function () {
-    await this.LastPriceDataNumAndSeparatorCheck();
+Then(/^I verify "([^"]*)" data numeric and contain thousand separator$/, async function (dataSelector) {
+    await this.dataNumericWithSeparator(dataSelector);
 });
 
-Then(/^I verify percentage and value change data has up to 3 decimal$/, async function () {
-    await this.valueAndPercentageDecimalCheck();
+Then(/^I verify "([^"]*)" data numeric and has 3 decimal places$/, async function (dataSelector) {
+    await this.dataNumAndSeparatorCheck(dataSelector);
+});
+
+Then(/^I verify "([^"]*)" data has up to 3 decimal$/, async function (dataSelector) {
+    await this.decimalCheck(dataSelector);
 });
 
 Then(/^I verify red for minus and green for plus displays$/, async function () {

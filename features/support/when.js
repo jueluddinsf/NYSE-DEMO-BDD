@@ -4,6 +4,6 @@ When(/^I click on "([^"]*)"$/, async function (selector) {
     await this.clickOnElement(selector)
 });
 
-When(/^I click on NYSE tab$/, async function () {
-    await this.clickNYSEtab();
+When(/^I click on "([^"]*)" tab$/, async function (tab) {
+    await this.clickTab(tab);
 });
