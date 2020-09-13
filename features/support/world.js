@@ -6,7 +6,8 @@ const homePage = require('../../page-objects/home.po');
 
 const launchConfig = {
     defaultViewport: null,
-    dumpio: true,
+    // capture all console messages have dumpio : true 
+    dumpio: false,
     headless: false,
     slowMo: 100,
     args: ['--disable-dev-shm-usage', '--no-sandbox'],
