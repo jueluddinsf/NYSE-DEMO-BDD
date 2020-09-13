@@ -1,6 +1,7 @@
 # NYSE-DEMO-BDD with Puppeteer, Chai & Cucumber
 
 ## How to set up your local environment to run the tests
+* git clone https://github.com/jueluddinsf/NYSE-DEMO-BDD.git
 * Install dependencies: `npm install` 
 * Run the tests: `npm test`
 * Generate html reports: `npm run report`. 

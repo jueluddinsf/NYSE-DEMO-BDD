@@ -1,7 +1,7 @@
 {
   "name": "NYSE-DEMO-BDD",
   "version": "1.0.0",
-  "description": "End to End testing with Cucumber and Puppeteer",
+  "description": "End to End BDD Test with Puppeteer",
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js -f json:reports/cucumber_report.json",
