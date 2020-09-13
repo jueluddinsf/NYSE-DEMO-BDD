@@ -34,7 +34,7 @@ Feature: Any user should be able see Market data component
         And I verify "homePage.valueAndPercentageData" data has up to 3 decimal
         Then I verify red for minus and green for plus displays
      
-     #test fails as Market data table stop displaying after few page refresh. Might be a known issue.
+     #test fails as clicking on Market data table 3rd row displays an error
     Scenario: 03 - Verify each row is clickable
         And I click on "homePage.nyseTab" tab
         Then I click on each row and verify quote page displays
