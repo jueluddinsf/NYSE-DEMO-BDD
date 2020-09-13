@@ -1,6 +1,5 @@
 const {Then} = require('cucumber');
 
-
 Then('I should be on home page', async function () {
     await this.verifyOnHomePage();
 });
@@ -45,10 +44,10 @@ Then(/^I should see "([^"]*)" within "([^"]*)"$/, async function (expectedText, 
     await this.verifyText(expectedText, selector);
 });
 
-Then(/^I verify all company name is uppercase$/, async function () {
-    await this.checkCompanyNameUpCase();
+Then(/^I verify words are uppercase for "([^"]*)"$/, async function (selectors) {
+    await this.checkWordsUpCase(selectors)
 });
 
-Then(/^I verify View Our Listings Directory link$/, async function () {
-    await this.checkListingsLink();
+Then(/^I verify "([^"]*)" link location is "([^"]*)"$/, async function (link, location) {
+    await this.checkListingsLink(link, location);
 });

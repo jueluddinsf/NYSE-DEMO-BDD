@@ -95,8 +95,8 @@ class MarketData {
     };
 
     async clickOnElement(selector) {
-        await this.page.waitForSelector(selector);
-        await this.page.click(selector);
+        await this.page.waitForSelector(eval(selector));
+        await this.page.click(eval(selector));
     };
 
     async TabsOrderCheck(expectedTabOrder) {
@@ -246,25 +246,25 @@ class MarketData {
     }
 
     async verifyText(expectedText, selector) {
-        const element = await this.page.$(selector);
+        const element = await this.page.$(eval(selector));
         const actualText = await this.page.evaluate(element => element.textContent, element);
         expect(actualText).to.include(expectedText)
     };
 
-    async checkCompanyNameUpCase() {
-        await this.page.waitForSelector(homePage.allRowsCompanyName);
-        const companyNames = await this.page.$$eval(homePage.allRowsCompanyName,
+    async checkWordsUpCase(selector) {
+        await this.page.waitForSelector(eval(selector));
+        const words = await this.page.$$eval(eval(selector),
             elements => elements.map(item => item.textContent.trim()));
-        //console.log(companyNames);
-        for (let i = 0; i < companyNames.length; i++) {
-            expect(isUpperCase(companyNames[i])).to.eq(true);
+        //console.log(words);
+        for (let i = 0; i < words.length; i++) {
+            expect(isUpperCase(words[i])).to.eq(true);
         }
     }
 
 
-    async checkListingsLink() {
-        const hrefs = await this.page.$$eval('div > div > p:nth-child(4) > a', as => as.map(a => a.href));
-        expect(hrefs[0]).to.eq('https://www.nyse.com/listings_directory/stock')
+    async checkListingsLink(link, location) {
+        const hrefs = await this.page.$$eval(eval(link), as => as.map(a => a.href));
+        expect(hrefs[0]).to.eq('https://www.nyse.com' + location)
     }
 
 

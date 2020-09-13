@@ -16,7 +16,7 @@ Feature: Any user should be able see Market data component
     Background: navigate to page
         Given I navigate to NYSE home page
         And The page title should be "The New York Stock Exchange | NYSE"
-        Then I click on ".ds-tabs"
+        Then I click on "homePage.tabs"
 
     Scenario: 01 - Verify market data tabs order and columns order for NYSE tab
         Then I verify market data tabs are in following order "INDICES,NYSE,NYSE American,ETFs"
@@ -41,16 +41,16 @@ Feature: Any user should be able see Market data component
 
     Scenario: 04 - Verify Company Name and column headers to be displayed in upper case
         Given I click on NYSE tab
-        And I should see "INDICES" within "#stats"
-        And I should see "NYSE" within "#stats"
-        And I should see "NYSE American" within "#stats"
-        And I should see "ETFs" within "#stats"
-        And I should see "Description" within ".ds-headerRow"
-        And I should see "Volume" within ".ds-headerRow"
-        And I should see "Last" within ".ds-headerRow"
-        And I should see "Change (%)" within ".ds-headerRow"
-        And I verify all company name is uppercase
-        Then I verify View Our Listings Directory link
+        And I should see "INDICES" within "homePage.marketData"
+        And I should see "NYSE" within "homePage.marketData"
+        And I should see "NYSE American" within "homePage.marketData"
+        And I should see "ETFs" within "homePage.marketData"
+        And I should see "Description" within "homePage.headerRow"
+        And I should see "Volume" within "homePage.headerRow"
+        And I should see "Last" within "homePage.headerRow"
+        And I should see "Change (%)" within "homePage.headerRow"
+        And I verify words are uppercase for "homePage.allRowsCompanyName"
+        Then I verify "homePage.listingsDirectoryLink" link location is "/listings_directory/stock"
 
         
         

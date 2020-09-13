@@ -10,5 +10,8 @@ module.exports = {
     greenData: 'div.ds-cell.d-green.d-flex-4',
     redData: 'div.ds-cell.d-red.d-flex-4',
     allRows: '.ds-row',
-    allRowsCompanyName: '.ds-row> div.ds-cell.d-flex-5'
+    allRowsCompanyName: '.ds-row> div.ds-cell.d-flex-5',
+    listingsDirectoryLink: 'div > div > p:nth-child(4) > a',
+    headerRow: '.ds-headerRow',
+    tabs: '.ds-tabs'
 };
