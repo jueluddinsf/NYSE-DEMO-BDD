@@ -140,14 +140,14 @@ class MarketData {
         await this.page.waitForSelector(homePage.volumeData);
         const ColTexts = await this.page.$$eval(homePage.volumeData,
             elements => elements.map(item => item.textContent.trim()));
-        const filteredVal = ColTexts.filter(function (el) {
-            return el !== 'Volume';
-        });
+        // const filteredVal = ColTexts.filter(function (el) {
+        //     return el !== 'Volume';
+        // });
         // verify Thousand Separator Exists 
         //console.log(filteredVal);
-        for (let i = 0; i < filteredVal.length; i++) {
-            expect(verifyThousandSeparatorExists(filteredVal[i])).to.eq(true);
-            const numberStr = filteredVal[i].replace(/,/g, '');
+        for (let i = 0; i < ColTexts.length; i++) {
+            expect(verifyThousandSeparatorExists(ColTexts[i])).to.eq(true);
+            const numberStr = ColTexts[i].replace(/,/g, '');
             // check if none numeric value present
             const regExp = /[a-zA-Z]/g;
             expect(regExp.test(numberStr)).to.eq(false);
@@ -159,13 +159,13 @@ class MarketData {
         await this.page.waitForSelector(homePage.lastData);
         const lastData = await this.page.$$eval(homePage.lastData,
             elements => elements.map(item => item.textContent.trim()));
-        const filteredLastData = lastData.filter(function (el) {
-            return el !== 'Last';
-        });
+        // const filteredLastData = lastData.filter(function (el) {
+        //     return el !== 'Last';
+        // });
         //console.log(filteredLastData);
-        for (let i = 0; i < filteredLastData.length; i++) {
-            expect(verifyNumHasUpTo3Decimal(filteredLastData[i])).to.eq(true);
-            const numberStr = filteredLastData[i].replace(/,/g, '');
+        for (let i = 0; i < lastData.length; i++) {
+            expect(verifyNumHasUpTo3Decimal(lastData[i])).to.eq(true);
+            const numberStr = lastData[i].replace(/,/g, '');
             // check if none numeric value present
             const regExp = /[a-zA-Z]/g;
             expect(regExp.test(numberStr)).to.eq(false);
@@ -178,12 +178,12 @@ class MarketData {
         await this.page.waitForSelector(homePage.valueAndPercentageData);
         const lastData = await this.page.$$eval(homePage.valueAndPercentageData,
             elements => elements.map(item => item.textContent.trim()));
-        const filteredValPerData = lastData.filter(function (el) {
-            return el !== 'Change (%)';
-        });
+        // const filteredValPerData = lastData.filter(function (el) {
+        //     return el !== 'Change (%)';
+        // });
         //console.log(filteredValPerData);
-        for (let i = 0; i < filteredValPerData.length; i++) {
-            const SplitData = filteredValPerData[i].split(" ");
+        for (let i = 0; i < lastData.length; i++) {
+            const SplitData = lastData[i].split(" ");
             const valueData = SplitData[0].replace(/[+-]/g, '').trim();
             //console.log(valueData.toString());
             const percentageData = SplitData[1].replace(/[(%)+-]/g, '').trim();
