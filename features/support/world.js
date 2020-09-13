@@ -13,7 +13,6 @@ const launchConfig = {
     args: ['--disable-dev-shm-usage', '--no-sandbox'],
 };
 
-const elementIsVisible = {visible: true};
 
 setDefaultTimeout(60 * 1000);
 
@@ -91,8 +90,7 @@ class MarketData {
 
     async verifyOnHomePage(expected_title) {
         const title = await this.page.title();
-        const expectedTitle = expected_title;
-        expect(title).to.equal(expectedTitle)
+        expect(title).to.equal(expected_title)
         //console.log("expected: " + expectedTitle + " and found " + title)
     };
 
@@ -128,7 +126,7 @@ class MarketData {
     async volumeDataDescCheck() {
         await this.page.waitForSelector(homePage.volumeData);
         const ColTexts = await this.page.$$eval(homePage.volumeData,
-            elements => elements.map(item => parseInt(item.textContent.replace(/\,/g, ''), 10)));
+            elements => elements.map(item => parseInt(item.textContent.replace(/,/g, ''), 10)));
         const filteredVal = ColTexts.filter(function (el) {
             return el != null;
         });
@@ -149,7 +147,7 @@ class MarketData {
         //console.log(filteredVal);
         for (let i = 0; i < filteredVal.length; i++) {
             expect(verifyThousandSeparatorExists(filteredVal[i])).to.eq(true);
-            const numberStr = filteredVal[i].replace(/\,/g, '');
+            const numberStr = filteredVal[i].replace(/,/g, '');
             // check if none numeric value present
             const regExp = /[a-zA-Z]/g;
             expect(regExp.test(numberStr)).to.eq(false);
@@ -167,7 +165,7 @@ class MarketData {
         //console.log(filteredLastData);
         for (let i = 0; i < filteredLastData.length; i++) {
             expect(verifyNumHasUpTo3Decimal(filteredLastData[i])).to.eq(true);
-            const numberStr = filteredLastData[i].replace(/\,/g, '');
+            const numberStr = filteredLastData[i].replace(/,/g, '');
             // check if none numeric value present
             const regExp = /[a-zA-Z]/g;
             expect(regExp.test(numberStr)).to.eq(false);

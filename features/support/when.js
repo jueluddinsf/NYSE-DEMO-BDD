@@ -1,5 +1,9 @@
 const {When} = require('cucumber');
 
-When('I navigate back to home', async function(){
-    await this.navigateBackHome();
+When(/^I click on "([^"]*)"$/, async function (selector) {
+    await this.clickOnElement(selector)
+});
+
+When(/^I click on NYSE tab$/, async function () {
+    await this.clickNYSEtab();
 });

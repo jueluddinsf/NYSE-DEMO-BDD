@@ -5,16 +5,12 @@ Then('I should be on home page', async function () {
     await this.verifyOnHomePage();
 });
 
-Then(/^I click on "([^"]*)"$/, async function (selector) {
-    await this.clickOnElement(selector)
+Then(/^The page title should be "([^"]*)"$/, async function (title) {
+    await this.verifyOnHomePage(title);
 });
 
 Then(/^I verify market data tabs are in following order "([^"]*)"$/, async function (tabsList) {
     await this.TabsOrderCheck(tabsList);
-});
-
-Then(/^I click on NYSE tab$/, async function () {
-    await this.clickNYSEtab();
 });
 
 Then(/^I verify the column order to be "([^"]*)"$/, async function (expectedColOrder) {
