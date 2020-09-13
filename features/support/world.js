@@ -95,44 +95,6 @@ class MarketData {
         console.log("expected: " + expectedTitle + " and found " + title)
     };
 
-    //
-    // Selection Page
-    //
-
-    async selectAnimalByName(animalName) {
-        const mapAnimalToValue = {
-            'George the Turtle': '1',
-            'Simba the Lion': '2',
-            'Nemo the Fish': '3'
-        };
-
-        await this.page.waitFor(selectionPage.animalSelect, elementIsVisible);
-        await this.page.select(selectionPage.animalSelect, mapAnimalToValue[animalName]);
-        const navPromise = this.page.waitForNavigation();
-        await this.page.waitFor(selectionPage.continueButton, elementIsVisible);
-        await this.page.click(selectionPage.continueButton);
-        await navPromise;
-    };
-
-    //
-    // Confirmation Page
-    //
-
-    async verifyConfirmationText() {
-        await this.page.waitFor(confirmationPage.paragraphText, elementIsVisible);
-        const text = await this.page
-            .evaluate(x => document.querySelector(x).innerText, confirmationPage.paragraphText);
-        expect(text)
-            .to.equal('Thank you for your selection. Your animal adoption papers will be sent to you shortly with a lovely card from your selected animal.')
-    };
-
-    async navigateBackHome() {
-        await this.page.waitFor(confirmationPage.backToHomeButton, elementIsVisible);
-        const navPromise = this.page.waitForNavigation();
-        await this.page.click(confirmationPage.backToHomeButton);
-        await navPromise;
-    };
-
     async clickOnElement(selector) {
         await this.page.waitForSelector(selector);
         await this.page.click(selector);
@@ -144,7 +106,7 @@ class MarketData {
         const tabTexts = await this.page.$$eval(homePage.marketDataTabs,
             elements => elements.map(item => item.textContent));
         expect(tabTexts).to.eql(expectOrder);
-        await console.log(tabTexts)
+        //await console.log(tabTexts)
     };
 
     async clickNYSEtab() {
@@ -158,7 +120,7 @@ class MarketData {
         const ColTexts = await this.page.$$eval(homePage.allColumns,
             elements => elements.map(item => item.textContent.trim()));
         expect(ColTexts).to.eql(expectColOrder);
-        await console.log(ColTexts)
+        //await console.log(ColTexts)
     };
 
 
@@ -170,7 +132,7 @@ class MarketData {
             return el != null;
         });
         // descending order check
-        console.log(verifyDescOrder(filteredVal));
+        //console.log(verifyDescOrder(filteredVal));
         expect(verifyDescOrder(filteredVal)).to.true;
     };
 
@@ -201,7 +163,7 @@ class MarketData {
         const filteredLastData = lastData.filter(function (el) {
             return el != 'Last';
         });
-        console.log(filteredLastData);
+        //console.log(filteredLastData);
         for (let i = 0; i < filteredLastData.length; i++) {
             expect(verifyNumHasUpTo3Decimal(filteredLastData[i])).to.eq(true);
             const numberStr = filteredLastData[i].replace(/\,/g, '');
@@ -220,13 +182,13 @@ class MarketData {
         const filteredValPerData = lastData.filter(function (el) {
             return el != 'Change (%)';
         });
-        console.log(filteredValPerData);
+        //console.log(filteredValPerData);
         for (let i = 0; i < filteredValPerData.length; i++) {
             const SplitData = filteredValPerData[i].split(" ");
             const valueData = SplitData[0].replace(/[+-]/g, '').trim();
-            console.log(valueData.toString());
+            //console.log(valueData.toString());
             const percentageData = SplitData[1].replace(/[(%)+-]/g, '').trim();
-            console.log(percentageData.toString());
+           // console.log(percentageData.toString());
 
             expect(verifyNumHasUpTo3Decimal(valueData)).to.eq(true);
             expect(verifyNumHasUpTo3Decimal(percentageData)).to.eq(true);
@@ -239,11 +201,11 @@ class MarketData {
         await this.page.waitForSelector(homePage.greenData);
         const greenData = await this.page.$$eval(homePage.greenData,
             elements => elements.map(item => item.textContent.trim()));
-        console.log(greenData);
+       // console.log(greenData);
 
         for (let i = 0; i < greenData.length; i++) {
-            console.log(greenData[i]);
-            console.log(greenData[i].includes("+"));
+            //console.log(greenData[i]);
+            //console.log(greenData[i].includes("+"));
             expect(greenData[i].includes("+")).to.eq(true);
             expect(greenData[i].includes("-")).to.eq(false);
         }
@@ -255,10 +217,10 @@ class MarketData {
         await this.page.waitForSelector(homePage.redData);
         const redData = await this.page.$$eval(homePage.redData,
             elements => elements.map(item => item.textContent.trim()));
-        console.log(redData);
+        //console.log(redData);
 
         for (let i = 0; i < redData.length; i++) {
-            console.log(redData[i]);
+            //console.log(redData[i]);
             expect(redData[i].includes("-")).to.eq(true);
             expect(redData[i].includes("+")).to.eq(false);
         }
@@ -269,7 +231,7 @@ class MarketData {
         await this.page.waitForSelector(homePage.allRowsCompanyName);
         const companyNames = await this.page.$$eval(homePage.allRowsCompanyName,
             elements => elements.map(item => item.textContent.trim()));
-        console.log(companyNames);
+       // console.log(companyNames);
         let counter = 2;
         for (let i = 0; i < companyNames.length; i++) {
             const rowSelector = `#stats > div > div > div:nth-child(2) > div > div > div > div:nth-child(${counter}`
@@ -294,7 +256,7 @@ class MarketData {
         await this.page.waitForSelector(homePage.allRowsCompanyName);
         const companyNames = await this.page.$$eval(homePage.allRowsCompanyName,
             elements => elements.map(item => item.textContent.trim()));
-        console.log(companyNames);
+        //console.log(companyNames);
         for (let i = 0; i < companyNames.length; i++) {
             expect(isUpperCase(companyNames[i])).to.eq(true);
         }
@@ -307,7 +269,7 @@ class MarketData {
     }
 
 
-};
+}
 
 
 setWorldConstructor(MarketData);
