@@ -1,5 +1,6 @@
 module.exports = {
     url: 'https://www.nyse.com/index',
+    baseUrl: 'https://www.nyse.com',
     marketData: '#stats',
     marketDataTabs: '.ds-tab.ds-tab',
     nyseTab: '.ds-tabs > div:nth-child(2)',

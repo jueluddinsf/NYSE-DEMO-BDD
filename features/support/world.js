@@ -264,7 +264,7 @@ class MarketData {
 
     async checkListingsLink(link, location) {
         const hrefs = await this.page.$$eval(eval(link), as => as.map(a => a.href));
-        expect(hrefs[0]).to.eq('https://www.nyse.com' + location)
+        expect(hrefs[0]).to.eq(homePage.baseUrl + location)
     }
 
 
