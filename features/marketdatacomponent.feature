@@ -52,6 +52,8 @@ Feature: Any user should be able see Market data component
         And I should see "Change (%)" within "homePage.headerRow"
         And I verify words are uppercase for "homePage.allRowsCompanyName"
         Then I verify "homePage.listingsDirectoryLink" link location is "/listings_directory/stock"
-
         
-        
+    Scenario: 05 - Verify Company Name check for company page title
+        And I click on "homePage.nyseTab" tab
+        And I should see "INDICES" within "homePage.marketData"
+        And I should see "NYSE" within "homePage.marketData"
