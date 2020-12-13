@@ -52,6 +52,8 @@ Feature: Any user should be able see Market data component
         And I should see "Change (%)" within "homePage.headerRow"
         And I verify words are uppercase for "homePage.allRowsCompanyName"
         Then I verify "homePage.listingsDirectoryLink" link location is "/listings_directory/stock"
-
         
-        
+   Scenario: This is the new test
+       Given I am on the home page 
+       When I click on "press"
+       Then I should see "Welcome"
