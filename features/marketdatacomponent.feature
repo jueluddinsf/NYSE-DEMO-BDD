@@ -39,6 +39,7 @@ Feature: Any user should be able see Market data component
         And I click on "homePage.nyseTab" tab
         Then I click on each row and verify quote page displays
 
+    # this test will also fail on the weekend and after hours    
     Scenario: 04 - Verify Company Name and column headers to be displayed in upper case
         And I click on "homePage.nyseTab" tab
         And I should see "INDICES" within "homePage.marketData"
